@@ -4,19 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccountProfile"
     android:background="@drawable/backdrop2"
-
-    >
+    tools:context=".UserAccount">
 
     <Button
         android:id="@+id/button"
-        android:layout_width="315dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="@dimen/btnWidth"
+        android:layout_height="@dimen/btnHeight"
         android:background="@drawable/prayer_times_button"
+        android:fontFamily="@font/montserrat_bold"
         android:text="Log out"
-        app:backgroundTint="@color/ic_launcher_background"
+        android:textSize="@dimen/btnText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -26,11 +24,13 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="319dp"
-        android:layout_height="57dp"
+        android:layout_width="@dimen/btnWidth"
+        android:layout_height="@dimen/btnHeight"
         android:layout_marginTop="24dp"
         android:background="@drawable/prayer_times_button"
+        android:fontFamily="@font/montserrat_bold"
         android:text="Save Update"
+        android:textSize="@dimen/btnText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,4 +86,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.592" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

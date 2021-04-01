@@ -4,4 +4,7 @@
     <dimen name="subHeading">28sp</dimen>
     <dimen name="text">22sp</dimen>
     <dimen name="title">50sp</dimen>
+    <dimen name="btnWidth">300dp</dimen>
+    <dimen name="btnHeight">45dp</dimen>
+    <dimen name="btnText">16sp</dimen>
 </resources>

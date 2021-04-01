@@ -10,13 +10,13 @@
         android:id="@+id/registerTitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
         android:fontFamily="@font/montserrat_bold"
+        android:textSize="@dimen/heading"
         android:gravity="center"
-        android:text="create new account"
         android:textAllCaps="true"
         android:textColor="@color/colorSecondary"
-        android:textSize="24sp"
+        android:text="create new account"
+        android:layout_marginTop="96dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,15 +24,19 @@
 
     <Button
         android:id="@+id/registerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/btnWidth"
+        android:layout_height="@dimen/btnHeight"
         android:background="@drawable/prayer_times_button"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/white"
         android:text="sign up"
+        android:textSize="@dimen/btnText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/validatePassword"
-        app:layout_constraintVertical_bias="0.144" />
+        app:layout_constraintVertical_bias="0.079" />
 
     <EditText
         android:id="@+id/password"
@@ -84,4 +88,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerButton"
         app:layout_constraintVertical_bias="0.043" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:scaleType="fitEnd"
+        android:src="@drawable/backdrop3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
