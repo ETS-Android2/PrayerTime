@@ -32,7 +32,7 @@ public class LauncherActivity extends Activity {
             public void onClick(View view) {
                 Intent i = new Intent(LauncherActivity.this,RegisterActivity.class);
                 startActivity(i);
-            }
+            }//comment
         });
 
         logButton.setOnClickListener(new View.OnClickListener() {
