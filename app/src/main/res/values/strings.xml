@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">PrayerTime</string>
     <string name="prayer_times">PRAYER TIMES</string>
+    <string name="email">Enter your email</string>
+    <string name="pass">Enter password</string>
+    <string name="verPass">Verify password</string>
 </resources>
