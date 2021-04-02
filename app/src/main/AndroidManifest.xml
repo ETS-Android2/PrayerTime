@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PrayerTime">
-        <activity android:name=".UserAccount"></activity>
+        <activity android:name=".AppSettingsActivity" />
+        <activity android:name=".UserAccount" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".loginActivity" />
         <activity android:name=".LauncherActivity">
