@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class loginActivity extends AppCompatActivity {
     DatabaseHelper myDb;
@@ -23,8 +24,21 @@ public class loginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(loginActivity.this, MainActivity.class);
-                startActivity(i);
+                String email = email2.getText().toString();
+                String password = pass2.getText().toString();
+
+                if(email.equals("") || password.equals(""))
+                    Toast.makeText(loginActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
+                else{
+                    Boolean checkEmailPass = myDb.checkEmailandPassword(email,password);
+                    if(checkEmailPass == true){
+                        Toast.makeText(loginActivity.this, "Sign in successfully", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(i);
+                    }else{
+                        Toast.makeText(loginActivity.this, "Invalid Credentials!", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
     }

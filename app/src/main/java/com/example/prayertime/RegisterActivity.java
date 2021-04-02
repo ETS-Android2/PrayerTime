@@ -21,7 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        Initialisation();//
+        Initialisation();
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,8 +39,17 @@ public class RegisterActivity extends AppCompatActivity {
                             Boolean insert = myDb.insertData(getEmail,getPassword);
                             if(insert==true){
                                 Toast.makeText(RegisterActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(i);
+                            }else{
+                                Toast.makeText(RegisterActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
                             }
                         }
+                        else{
+                            Toast.makeText(RegisterActivity.this, "User already exist! Please sign in", Toast.LENGTH_SHORT).show();
+                        }
+                    }else {
+                        Toast.makeText(RegisterActivity.this, "Passwords not matching", Toast.LENGTH_SHORT).show();
                     }
                 }
 
