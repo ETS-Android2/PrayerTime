@@ -4,4 +4,7 @@
     <string name="email">Enter your email</string>
     <string name="pass">Enter password</string>
     <string name="verPass">Verify password</string>
+    <string name="backdrop">backdrop</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
 </resources>

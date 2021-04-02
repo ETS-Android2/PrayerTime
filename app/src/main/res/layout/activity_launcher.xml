@@ -30,7 +30,8 @@
         android:scaleType="fitEnd"
         android:src="@drawable/backdrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/backdrop" />
 
     <Button
         android:id="@+id/regButton"
@@ -39,7 +40,7 @@
         android:background="@drawable/prayer_times_button"
         android:fontFamily="@font/montserrat_bold"
         android:textColor="@color/white"
-        android:text="Register"
+        android:text="@string/register"
         android:textSize="@dimen/btnText"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +56,7 @@
         android:background="@drawable/prayer_times_button"
         android:fontFamily="@font/montserrat_bold"
         android:textColor="@color/white"
-        android:text="login"
+        android:text="@string/login"
         android:textSize="@dimen/btnText"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
