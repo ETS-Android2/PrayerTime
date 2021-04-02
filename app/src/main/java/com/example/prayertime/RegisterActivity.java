@@ -2,7 +2,9 @@ package com.example.prayertime;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Boolean insert = myDb.insertData(getEmail,getPassword);
                             if(insert==true){
                                 Toast.makeText(RegisterActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                                SetAccountUser();
                                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(i);
                             }else{
@@ -71,5 +74,20 @@ public class RegisterActivity extends AppCompatActivity {
         rePassword = findViewById(R.id.validatePassword);
         register = findViewById(R.id.registerButton);
         haveAccount = findViewById(R.id.haveAccount);
+    }
+    public void SetAccountUser(){
+        TextView email2=findViewById(R.id.email);//change
+       TextView pass2=findViewById(R.id.password);//change name
+        String emaill=email2.getText().toString();
+        String passin=pass2.getText().toString();
+
+
+        SharedPreferences mySharedPreferences = this.getSharedPreferences("MYPREFERENCENAME", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mySharedPreferences.edit();
+        editor.putString("USERNAME",emaill);
+        editor.putString("Password",passin);
+        editor.apply();
+
+
     }
 }
