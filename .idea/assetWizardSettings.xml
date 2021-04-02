@@ -37,7 +37,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="D:\Downloads\backgroundImage.png" />
+                                                <entry key="imagePath" value="D:\Downloads\icon_prayerTumes.png" />
                                                 <entry key="opacityPercent" value="60" />
                                               </map>
                                             </option>
@@ -71,7 +71,7 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="D:\Downloads\backgroundImage.png" />
+                                      <entry key="imageAsset" value="D:\Downloads\icon_prayerTumes.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -99,8 +99,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="D:\Downloads\Untitled design.png" />
-                                                <entry key="scalingPercent" value="88" />
+                                                <entry key="imagePath" value="D:\Downloads\icon_prayerTumes.png" />
+                                                <entry key="scalingPercent" value="60" />
                                               </map>
                                             </option>
                                           </PersistentState>
