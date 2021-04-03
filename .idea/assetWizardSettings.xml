@@ -323,8 +323,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="prayer_background" />
-                            <entry key="sourceFile" value="D:\Downloads\background.svg" />
+                            <entry key="outputName" value="ic_prayertimes" />
+                            <entry key="sourceFile" value="D:\Downloads\ic_prayerTimes.svg" />
                           </map>
                         </option>
                       </PersistentState>

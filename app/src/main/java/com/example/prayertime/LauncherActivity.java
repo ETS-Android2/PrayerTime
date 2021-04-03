@@ -8,22 +8,12 @@ import android.view.View;
 import android.widget.Button;
 
 public class LauncherActivity extends Activity {
-    Handler handler;
     Button regButton, logButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
 
-//        handler=new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                Intent intent=new Intent(LauncherActivity.this,MainActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        },1000);
         regButton = findViewById(R.id.regButton);
         logButton = findViewById(R.id.logButton);
 

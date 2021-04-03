@@ -6,5 +6,5 @@
     <dimen name="title">50sp</dimen>
     <dimen name="btnWidth">300dp</dimen>
     <dimen name="btnHeight">45dp</dimen>
-    <dimen name="btnText">16sp</dimen>
+    <dimen name="btnText">14sp</dimen>
 </resources>
