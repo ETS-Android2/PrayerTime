@@ -17,12 +17,10 @@ public class MainActivity extends AppCompatActivity {
 
         buttonOne.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-
-
                 Intent i=new Intent(MainActivity.this,UserAccount.class);
                 startActivity(i);
             }
+            
         });
     }
 }

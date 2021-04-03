@@ -43,8 +43,8 @@
 
     <EditText
         android:id="@+id/emailprofilee"
-        android:layout_width="335dp"
-        android:layout_height="59dp"
+        android:layout_width="@dimen/textWidth"
+        android:layout_height="@dimen/textHeight"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
@@ -57,8 +57,8 @@
 
     <EditText
         android:id="@+id/passwordprofile"
-        android:layout_width="332dp"
-        android:layout_height="51dp"
+        android:layout_width="@dimen/textWidth"
+        android:layout_height="@dimen/textHeight"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -73,14 +73,14 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="350dp"
-        android:layout_height="67dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="edit user Account"
         android:textAllCaps="true"
         android:textColor="@color/colorSecondary"
         android:textSize="@dimen/heading"
-        android:textStyle="bold"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/edit_user_account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.59"

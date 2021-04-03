@@ -14,4 +14,5 @@
     <string name="logo">Logo</string>
     <string name="prayer">Prayer</string>
     <string name="times">Times</string>
+    <string name="edit_user_account">edit user Account</string>
 </resources>
