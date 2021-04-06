@@ -25,7 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table " + TABLE_NAME +" (email TEXT PRIMARY KEY, password TEXT, prayerName TEXT, prayerTime TEXT) ");
+        sqLiteDatabase.execSQL("create table " + TABLE_NAME +" (email TEXT PRIMARY KEY, password TEXT) ");
         sqLiteDatabase.execSQL("create table prayer_time (email TEXT,name TEXT,time TEXT,FOREIGN KEY(email) REFERENCES prayerTime_table (email));");
     }
 

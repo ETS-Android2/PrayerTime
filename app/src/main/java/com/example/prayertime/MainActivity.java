@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences mySharedPreferences = this.getSharedPreferences("MYPREFERENCENAME", Context.MODE_PRIVATE);
         String email = mySharedPreferences.getString("USERNAME","");
 
-        System.out.println(email);
-
         list = new ArrayList<PrayerTime>();
         list = db.getTimes(email);
 
@@ -70,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         db.insertPrayerTimeData(email,"Asr","3:24 PM");
         db.insertPrayerTimeData(email,"Maghreb","6:11 PM");
         boolean res = db.insertPrayerTimeData(email,"Isha","7:41 PM");
-        
+
 
     }
 
