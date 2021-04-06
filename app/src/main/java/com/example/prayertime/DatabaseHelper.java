@@ -26,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table " + TABLE_NAME +" (email TEXT PRIMARY KEY, password TEXT, prayerName TEXT, prayerTime TEXT) ");
-        sqLiteDatabase.execSQL("create table prayer_times (email TEXT,name TEXT,time TEXT,FOREIGN KEY(email) REFERENCES prayerTime_table (email));");
+        sqLiteDatabase.execSQL("create table prayer_time (email TEXT,name TEXT,time TEXT,FOREIGN KEY(email) REFERENCES prayerTime_table (email));");
     }
 
     @Override
@@ -68,7 +68,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.beginTransaction();
 
         try{
-            cur = db.query("prayer_time",new String[] {}, "email ="+em,null,null,null,null);
+            cur = db.query("prayer_time",new String[] {}, "email = '"+em+"'",null,null,null,null);
             if(cur!=null){
                 if(cur.moveToFirst()){
                     do{

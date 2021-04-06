@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //
 //        });
+
         setUpData();
 
         times = findViewById(R.id.timesView);
@@ -44,15 +45,11 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences mySharedPreferences = this.getSharedPreferences("MYPREFERENCENAME", Context.MODE_PRIVATE);
         String email = mySharedPreferences.getString("USERNAME","");
 
+        System.out.println(email);
+
         list = new ArrayList<PrayerTime>();
         list = db.getTimes(email);
 
-//        PrayerTime t = new PrayerTime("Fajer","4:30");
-//        PrayerTime t2 = new PrayerTime("Fajer","4:80");
-//        list.add(t);
-//        list.add(t2);
-//        list.add(t2);
-//        list.add(t);
 
         adapter = new TimeViewAdapter(MainActivity.this,list);
         times.setAdapter(adapter);
@@ -67,16 +64,13 @@ public class MainActivity extends AppCompatActivity {
         String email = mySharedPreferences.getString("USERNAME","");
 
         db = new DatabaseHelper(this);
-
+        //default data
         db.insertPrayerTimeData(email,"Fajer","4:20 AM");
         db.insertPrayerTimeData(email,"Dhuhr","11:56 AM");
         db.insertPrayerTimeData(email,"Asr","3:24 PM");
         db.insertPrayerTimeData(email,"Maghreb","6:11 PM");
         boolean res = db.insertPrayerTimeData(email,"Isha","7:41 PM");
-
-        if(!res){
-            System.out.println("ereryuy");
-        }
+        
 
     }
 
