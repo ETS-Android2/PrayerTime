@@ -320,11 +320,26 @@
                   <entry key="vectorAssetStep">
                     <value>
                       <PersistentState>
+                        <option name="children">
+                          <map>
+                            <entry key="clipartAsset">
+                              <value>
+                                <PersistentState>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/notifications_none/baseline_notifications_none_24.xml" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                         <option name="values">
                           <map>
-                            <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_prayertimes" />
-                            <entry key="sourceFile" value="D:\Downloads\ic_prayerTimes.svg" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="ic_baseline_notifications_none_24" />
+                            <entry key="sourceFile" value="/D:\Downloads\ic_prayerTimes.svg" />
                           </map>
                         </option>
                       </PersistentState>
