@@ -1,12 +1,15 @@
 package com.example.prayertime;
 
 import android.content.Context;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -33,6 +36,11 @@ public class TimeViewAdapter extends RecyclerView.Adapter<TimeViewAdapter.MyView
         holder.name.setText(list.get(i).getName());
         holder.time.setText(list.get(i).getTime());
 
+        if(i==0){
+            holder.layout.setBackgroundResource(R.drawable.now_prayer);
+            holder.icon.setBackgroundResource(R.drawable.ic_baseline_notifications_none_24);
+        }
+
     }
 
     @Override
@@ -43,11 +51,15 @@ public class TimeViewAdapter extends RecyclerView.Adapter<TimeViewAdapter.MyView
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView name,time;
+        LinearLayout layout;
+        TextView icon;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.prayerName);
             time = (TextView) itemView.findViewById(R.id.prayerTime);
+            layout = itemView.findViewById(R.id.timeView);
+            icon = (TextView) itemView.findViewById(R.id.notifyIcon);
 
         }
     }

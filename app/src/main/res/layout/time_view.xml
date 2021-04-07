@@ -4,11 +4,12 @@
     android:layout_height="70dp"
     android:orientation="horizontal"
     android:background="@drawable/time_view"
-    android:layout_marginTop="10dp">
+    android:layout_marginTop="10dp"
+    android:id="@+id/timeView">
 
     <TextView
         android:id="@+id/prayerName"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed"
         android:text="Fajer"
@@ -19,20 +20,21 @@
 
     <TextView
         android:id="@+id/prayerTime"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="4:20 AM"
+        android:text="12:60 AM"
         android:textColor="@color/white"
-        android:textSize="25sp"
-        android:layout_marginLeft="180sp"
+        android:textSize="20sp"
+        android:layout_marginLeft="60sp"
         android:layout_marginTop="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="-5dp"/>
+
+        android:layout_marginTop="-2dp"
+        android:id="@+id/notifyIcon"/>
 
 
 </LinearLayout>

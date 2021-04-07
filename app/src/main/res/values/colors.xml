@@ -6,6 +6,7 @@
     <color name="colorSecondaryVariant">#848BBA</color>
     <color name="colorSecondaryLow">#8F848BBA</color>
     <color name="colorSecondaryLow2">#99848BBA</color>
+    <color name="colorSecondaryLow3">#D9848BBA</color>
     <color name="black">#24273E</color>
     <color name="white">#FEFEFF</color>
 </resources>
