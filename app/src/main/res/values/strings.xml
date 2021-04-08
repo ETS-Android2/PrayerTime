@@ -15,4 +15,74 @@
     <string name="prayer">Prayer</string>
     <string name="times">Times</string>
     <string name="edit_user_account">edit user Account</string>
+
+
+    <!-- Prefrences -->
+    <string name="manual">manual</string>
+    <string name="manual_title">Manual Settings</string>
+    <string name="manual_summary">Calculates the prayer times based on preferred parameters</string>
+
+    <string name="juristic">juristic</string>
+    <string name="juristic_title">Juristic Method</string>
+    <string name="juristic_default">hanafi</string>
+    <string-array name="juristic_entries">
+        <item> Hanafi </item>
+        <item> AlShafi\'i </item>
+    </string-array>
+    <string-array name="juristic_values">
+        <item> hanafi </item>
+        <item> alshafi </item>
+    </string-array>
+
+    <string name="calculation">calculation</string>
+    <string name="calculation_title">Calculation Conventions</string>
+    <string name="calculation_default">makkah</string>
+    <string-array name="calculation_entries">
+        <item> Umm al-Qura, Makkah </item>
+        <item> Muslim World League </item>
+        <item> University of Islamic Sciences, Karachi </item>
+        <item> Islamic Society of North America </item>
+        <item> Jafari</item>
+        <item> Egyptian General Authority of Survey </item>
+        <item> University of Tehran </item>
+    </string-array>
+    <string-array name="calculation_values">
+        <item>makkah</item>
+        <item> mwl </item>
+        <item> karachi </item>
+        <item> isna </item>
+        <item> jafari </item>
+        <item> egyptian </item>
+        <item> tehran </item>
+    </string-array>
+    <string name="latitude">latitude</string>
+    <string name="latitude_title">Latitude Adjustments</string>
+    <string name="latitude_default">none</string>
+    <string-array name="latitude_entries">
+        <item>None</item>
+        <item>Middle of the Night</item>
+        <item>1/7 of the Night</item>
+        <item>Angle based Method</item>
+    </string-array>
+    <string-array name="latitude_values">
+        <item>none</item>
+        <item>middle</item>
+        <item>oneseventh</item>
+        <item>angle</item>
+    </string-array>
+
+    <string name="time">time</string>
+    <string name="time_title">Time Format</string>
+    <string name="time_default">0</string>
+    <string-array name="time_entries">
+        <item>24 Hours</item>
+        <item>12 Hours</item>
+        <item>Not sure</item>
+    </string-array>
+    <string-array name="time_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 </resources>

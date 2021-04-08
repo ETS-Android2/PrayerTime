@@ -37,13 +37,14 @@
 
 
     <Button
+        android:id="@+id/settingButton"
         android:layout_width="100px"
         android:layout_height="100px"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
         android:layout_marginTop="28dp"
+        android:backgroundTint="@color/white"
         android:background="@drawable/ic_baseline_settings_24"
-        android:theme="@style/Theme.iconColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,7 +62,7 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="600px"
-        android:background="@drawable/prayer_times_container"
+        android:background="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

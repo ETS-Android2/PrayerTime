@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         times.setLayoutManager(new LinearLayoutManager(this));
 
         SharedPreferences mySharedPreferences = this.getSharedPreferences("MYPREFERENCENAME", Context.MODE_PRIVATE);
-        String email = mySharedPreferences.getString("USERNAME","");
+        String email = mySharedPreferences.getString("USERNAME", "");
 
         list = new ArrayList<PrayerTime>();
         list = db.getTimes(email);
@@ -59,14 +60,14 @@ public class MainActivity extends AppCompatActivity {
         Long current = Calendar.getInstance().getTime().getTime();
 
 
-        for(int i=0;i<list.size();i++){
+        for (int i = 0; i < list.size(); i++) {
             SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
             try {
                 Date timed = timeFormat.parse(list.get(i).getTime());
                 Long time = timed.getTime();
 
-                if(time>current){
-                    System.out.println("yes"+time);
+                if (time > current) {
+                    System.out.println("yes" + time);
                 }
 
             } catch (ParseException e) {
@@ -74,25 +75,39 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        adapter = new TimeViewAdapter(MainActivity.this,list);
+        adapter = new TimeViewAdapter(MainActivity.this, list);
         times.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
 
+        Button settings = findViewById(R.id.settingButton);
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, AppSettingsActivity.class);
+                startActivity(i);
+            }
+        });
+
+        PreferenceManager.setDefaultValues(this, R.xml.prefrences, false);
+
+
+
+
     }
 
-    private void setUpData(){
+    private void setUpData() {
 
         SharedPreferences mySharedPreferences = this.getSharedPreferences("MYPREFERENCENAME", Context.MODE_PRIVATE);
-        String email = mySharedPreferences.getString("USERNAME","");
+        String email = mySharedPreferences.getString("USERNAME", "");
 
         db = new DatabaseHelper(this);
         //default data
-        db.insertPrayerTimeData(email,"Fajer","4:20 AM");
-        db.insertPrayerTimeData(email,"Dhuhr","11:56 AM");
-        db.insertPrayerTimeData(email,"Asr","3:24 PM");
-        db.insertPrayerTimeData(email,"Maghreb","6:11 PM");
-        boolean res = db.insertPrayerTimeData(email,"Isha","7:41 PM");
+        db.insertPrayerTimeData(email, "Fajer", "4:20 AM");
+        db.insertPrayerTimeData(email, "Dhuhr", "11:56 AM");
+        db.insertPrayerTimeData(email, "Asr", "3:24 PM");
+        db.insertPrayerTimeData(email, "Maghreb", "6:11 PM");
+        boolean res = db.insertPrayerTimeData(email, "Isha", "7:41 PM");
 
 
     }

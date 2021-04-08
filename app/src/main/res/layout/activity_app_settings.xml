@@ -7,8 +7,23 @@
     android:orientation="vertical"
     tools:context=".AppSettingsActivity">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Settings"
+        android:backgroundTint="@color/colorPrimaryVariant"
+        app:navigationIcon="?attr/homeAsUpIndicator"/>
+
+
     <FrameLayout
         android:id="@+id/fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+    </FrameLayout>
+
 </LinearLayout>
