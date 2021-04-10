@@ -14,7 +14,7 @@
         android:dependency="@string/manual"
         android:entries="@array/juristic_entries"
         android:entryValues="@array/juristic_values"
-        android:key="@string/juristic"
+        android:key="juristic"
         android:title="@string/juristic_title" />
 
     <ListPreference
