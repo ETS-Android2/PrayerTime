@@ -30,8 +30,8 @@
         <item> AlShafi\'i </item>
     </string-array>
     <string-array name="juristic_values">
-        <item> hanafi </item>
-        <item> alshafi </item>
+        <item> 0 </item>
+        <item> 1 </item>
     </string-array>
 
     <string name="calculation">calculation</string>
@@ -47,13 +47,13 @@
         <item> University of Tehran </item>
     </string-array>
     <string-array name="calculation_values">
-        <item>makkah</item>
-        <item> mwl </item>
-        <item> karachi </item>
-        <item> isna </item>
-        <item> jafari </item>
-        <item> egyptian </item>
-        <item> tehran </item>
+        <item>0</item>
+        <item> 1 </item>
+        <item> 2 </item>
+        <item> 3 </item>
+        <item> 4 </item>
+        <item> 5 </item>
+        <item> 6 </item>
     </string-array>
     <string name="latitude">latitude</string>
     <string name="latitude_title">Latitude Adjustments</string>
@@ -65,10 +65,10 @@
         <item>Angle based Method</item>
     </string-array>
     <string-array name="latitude_values">
-        <item>none</item>
-        <item>middle</item>
-        <item>oneseventh</item>
-        <item>angle</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
     </string-array>
 
     <string name="time">time</string>
@@ -77,12 +77,14 @@
     <string-array name="time_entries">
         <item>24 Hours</item>
         <item>12 Hours</item>
-        <item>Not sure</item>
+        <item>12-hour format with no suffix</item>
+        <item> floating point number </item>
     </string-array>
     <string-array name="time_values">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
 
 </resources>
