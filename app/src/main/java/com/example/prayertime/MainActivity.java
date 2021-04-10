@@ -168,25 +168,21 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 fajer.setName(prayerNames.get(i));
                 fajer.setTime(prayerTimes.get(i));
                 list.add(fajer);
-                adapter.notifyDataSetChanged();
             }
             if (i == 1) {
                 Sunrise.setName(prayerNames.get(i));
                 Sunrise.setTime(prayerTimes.get(i));
                 list.add(Sunrise);
-                adapter.notifyDataSetChanged();
             }
             if (i == 2) {
                 Duhur.setName(prayerNames.get(i));
                 Duhur.setTime(prayerTimes.get(i));
                 list.add(Duhur);
-                adapter.notifyDataSetChanged();
             }
             if (i == 3) {
                 asser.setName(prayerNames.get(i));
                 asser.setTime(prayerTimes.get(i));
                 list.add(asser);
-                adapter.notifyDataSetChanged();
             }
 
             if (i == 4) {
@@ -194,19 +190,16 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 Sunset.setName(prayerNames.get(i));
                 Sunset.setTime(prayerTimes.get(i));
                 list.add(Sunset);
-                adapter.notifyDataSetChanged();
             }
             if (i == 5) {
                 magrib.setName(prayerNames.get(i));
                 magrib.setTime(prayerTimes.get(i));
                 list.add(magrib);
-                adapter.notifyDataSetChanged();
             }
             if (i == 6) {
                 isha.setName(prayerNames.get(i));
                 isha.setTime(prayerTimes.get(i));
                 list.add(isha);
-                adapter.notifyDataSetChanged();
             }
         }
         times.setHasFixedSize(true);
@@ -214,24 +207,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         adapter = new TimeViewAdapter(MainActivity.this, list);
 
         times.setAdapter(adapter);
-
-        Long current = Calendar.getInstance().getTime().getTime();
-
-        // كود رهف :)
-        for (int i = 0; i < list.size(); i++) {
-            SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
-            try {
-                Date timed = timeFormat.parse(list.get(i).getTime());
-                Long time = timed.getTime();
-
-                if (time > current) {
-                    System.out.println("yes" + time);
-                }
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
+        adapter.notifyDataSetChanged();
+        
     }
 
 }
