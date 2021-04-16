@@ -304,10 +304,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
                     AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-                    String timeInHours="00:00:00";
+                    String timeInHours="";
                     //set the alarm as hh:mm:ss
-                    if(list.get(i).isNext())
-                        timeInHours =  list.get(i).getTime().concat(":00"); // this ONLY works on 24 hour format for now
+                    if(list.get(i).isNext()) {
+                        timeInHours = list.get(i).getTime().concat(":00"); // this ONLY works on 24 hour format for now
 
 //                    if(Integer.parseInt(s4)==0){
 //                        timeInHours =  prayerTimes.get(i).substring(0,5);
@@ -315,20 +315,21 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 //                    }else if(Integer.parseInt(s4)==3){
 //
 //                    }
-                    //String timeInHours = "04:19:00"; //use this for testing
-                    Toast.makeText(MainActivity.this, "alarm is set at " + timeInHours, Toast.LENGTH_SHORT).show();
-                    String myDate = date.concat(timeInHours);
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                    Date finalDate = null;
-                    try {
-                        finalDate = sdf.parse(myDate);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
+                        //String timeInHours = "04:19:00"; //use this for testing
+                        Toast.makeText(MainActivity.this, "alarm is set at " + timeInHours, Toast.LENGTH_SHORT).show();
+                        String myDate = date.concat(timeInHours);
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                        Date finalDate = null;
+                        try {
+                            finalDate = sdf.parse(myDate);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
 
-                    long timeInMillis = finalDate.getTime(); // get time in millisecond
-                    Toast.makeText(MainActivity.this, timeInMillis + "", Toast.LENGTH_SHORT).show();
-                    alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent); // or setExact NOT SURE!!
+                        long timeInMillis = finalDate.getTime(); // get time in millisecond
+                        Toast.makeText(MainActivity.this, timeInMillis + "", Toast.LENGTH_SHORT).show();
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent); // or setExact NOT SURE!!
+                    }
                 }
             }
         });
