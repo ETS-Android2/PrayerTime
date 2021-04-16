@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 int RG1;
                 int RG2;
                 int RG3;
-                int RG4;
+                int RG4 = 0; // just intilize
                 if (!(s1.equals("") && s2.equals("") && s3.equals("") && s4.equals(""))) {
                     RG1 = Integer.parseInt(s1);
                     RG2 = Integer.parseInt(s2);
@@ -169,12 +169,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                         list.add(asser);
                     }
 
-//                    if (i == 4) {
-//
-//                        Sunset.setName(prayerNames.get(i));
-//                        Sunset.setTime(prayerTimes.get(i));
-//                        list.add(Sunset);
-//                    }
+                    if (i == 4) {
+
+                        Sunset.setName(prayerNames.get(i));
+                        Sunset.setTime(prayerTimes.get(i));
+                        list.add(Sunset);
+                    }
                     if (i == 5) {
                         magrib.setName(prayerNames.get(i));
                         magrib.setTime(prayerTimes.get(i));
@@ -203,12 +203,17 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     // Generate a pending intent to be used later
                     Intent intent = new Intent(MainActivity.this, PrayerTimeBroadcast.class);
                     intent.putExtra("NotificationID", 1);
-                    //intent.putExtra("ChannelID", i+"");
+                    //intent.putExtra("NotificationID", i);
                     PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
                     AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
                     //set the alarm as hh:mm:ss
                     String timeInHours =  prayerTimes.get(i).concat(":00"); // this ONLY works on 24 hour format for now
+                    System.out.println(Integer.parseInt(s4));
+                    if(Integer.parseInt(s4)==0){
+                        timeInHours =  prayerTimes.get(i).substring(0,5);
+                        timeInHours = timeInHours.concat(":00");
+                    }else if(Integer.parseInt(s4)==3)
                     //String timeInHours = "04:19:00"; //use this for testing
                     Toast.makeText(MainActivity.this, "alarm is set at " + timeInHours, Toast.LENGTH_SHORT).show();
                     String myDate = date.concat(timeInHours);
