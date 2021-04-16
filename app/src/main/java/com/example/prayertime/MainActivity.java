@@ -66,6 +66,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             }
         });
 
+        Button userAccount = findViewById(R.id.useraccount);
+        userAccount.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, UserAccount.class);
+                startActivity(i);
+            }
+        });
+
         calculatePrayTimes = findViewById(R.id.calPrayerTime_button);
         //Runtime permissions
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -74,14 +82,116 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     Manifest.permission.ACCESS_FINE_LOCATION
             }, 100);
         }
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
         calculatePrayTimes.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
                 //create method
-                getprayertime();
+//                getprayertime();
+//
+//                ArrayList<String> prayers = getprayertime(); // Retreive the prayer time
 
-                ArrayList<String> prayers = getprayertime(); // Retreive the prayer time
+                PrayTime prayers = new PrayTime();
+                double latitude1 = 24.644659;
+                double longitude2 = 46.587570;
+                double timezone = prayers.getBaseTimeZone();
+
+                String s1 = prefs.getString(getString(R.string.juristic), "");
+                String s2 = prefs.getString(getString(R.string.calculation), "");
+                String s3 = prefs.getString(getString(R.string.latitude), "");
+                String s4 = prefs.getString(getString(R.string.time), "");
+                // Toast.makeText(this, s3, Toast.LENGTH_SHORT).show();
+
+                int RG1;
+                int RG2;
+                int RG3;
+                int RG4;
+                if (!(s1.equals("") && s2.equals("") && s3.equals("") && s4.equals(""))) {
+                    RG1 = Integer.parseInt(s1);
+                    RG2 = Integer.parseInt(s2);
+                    RG3 = Integer.parseInt(s3);
+                    RG4 = Integer.parseInt(s4);
+
+                    prayers.setTimeFormat(RG4);
+                    prayers.setCalcMethod(RG2);
+                    prayers.setAsrJuristic(RG1);
+                    prayers.setAdjustHighLats(RG3);
+                } else {
+                    prayers.setTimeFormat(1);
+                    prayers.setCalcMethod(4);
+                    prayers.setAsrJuristic(0);
+                    prayers.setAdjustHighLats(0);
+                }
+
+
+                Date now = new Date();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(now);
+
+                int[] offsets = {0, 0, 0, 0, 0, 0, 0}; // {Fajr,Sunrise,Dhuhr,Asr,Sunset,Maghrib,Isha}
+                prayers.tune(offsets);
+
+                ArrayList<String> prayerTimes = prayers.getPrayerTimes(cal, latitude1, longitude2, timezone);
+
+
+                PrayerTime fajer = new PrayerTime();
+                PrayerTime Sunrise = new PrayerTime();
+                PrayerTime Duhur = new PrayerTime();
+                PrayerTime asser = new PrayerTime();
+                PrayerTime Sunset = new PrayerTime();
+                PrayerTime magrib = new PrayerTime();
+                PrayerTime isha = new PrayerTime();
+
+                ArrayList<String> prayerNames = prayers.getTimeNames();
+                times = (RecyclerView) findViewById(R.id.timesView);
+                list = new ArrayList<PrayerTime>();
+                for (int i = 0; i < prayerTimes.size(); i++) {
+                    if (i == 0) {
+                        fajer.setName(prayerNames.get(i));
+                        fajer.setTime(prayerTimes.get(i));
+                        list.add(fajer);
+                    }
+                    if (i == 1) {
+                        Sunrise.setName(prayerNames.get(i));
+                        Sunrise.setTime(prayerTimes.get(i));
+                        list.add(Sunrise);
+                    }
+                    if (i == 2) {
+                        Duhur.setName(prayerNames.get(i));
+                        Duhur.setTime(prayerTimes.get(i));
+                        list.add(Duhur);
+                    }
+                    if (i == 3) {
+                        asser.setName(prayerNames.get(i));
+                        asser.setTime(prayerTimes.get(i));
+                        list.add(asser);
+                    }
+
+//                    if (i == 4) {
+//
+//                        Sunset.setName(prayerNames.get(i));
+//                        Sunset.setTime(prayerTimes.get(i));
+//                        list.add(Sunset);
+//                    }
+                    if (i == 5) {
+                        magrib.setName(prayerNames.get(i));
+                        magrib.setTime(prayerTimes.get(i));
+                        list.add(magrib);
+                    }
+                    if (i == 6) {
+                        isha.setName(prayerNames.get(i));
+                        isha.setTime(prayerTimes.get(i));
+                        list.add(isha);
+                    }
+                }
+                times.setHasFixedSize(true);
+
+                adapter = new TimeViewAdapter(MainActivity.this, list);
+
+                times.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
 
                 // get the current date (today) in yyyy/MM/dd format
                 Date today = new Date();
@@ -89,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 String date = DATE_FORMAT.format(today);
 
                 //Loop and generate a notification for every prayer time
-                for (int i = 0; i < prayers.size(); i++) {
+                for (int i = 0; i < prayerTimes.size(); i++) {
                     // Generate a pending intent to be used later
                     Intent intent = new Intent(MainActivity.this, PrayerTimeBroadcast.class);
                     intent.putExtra("NotificationID", 1);
@@ -98,8 +208,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
                     //set the alarm as hh:mm:ss
-                    String timeInHours =  prayers.get(i).concat(":00"); // this ONLY works on 24 hour format for now
-                    // String timeInHours = "05:52:00"; //use this for testing
+                    String timeInHours =  prayerTimes.get(i).concat(":00"); // this ONLY works on 24 hour format for now
+                    //String timeInHours = "04:19:00"; //use this for testing
                     Toast.makeText(MainActivity.this, "alarm is set at " + timeInHours, Toast.LENGTH_SHORT).show();
                     String myDate = date.concat(timeInHours);
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -114,7 +224,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     Toast.makeText(MainActivity.this, timeInMillis + "", Toast.LENGTH_SHORT).show();
                     alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent); // or setExact NOT SURE!!
                 }
-
             }
         });
 
@@ -177,59 +286,60 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     public void onProviderDisabled(String provider) {
 
     }
-
-    public ArrayList<String> getprayertime() {
-        getLocation();
-
-        PrayTime prayers = new PrayTime();
-        double latitude1 = 24.644659;
-        double longitude2 = 46.587570;
-        double timezone = prayers.getBaseTimeZone();
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = prefs.edit();
-
-        String s1 = prefs.getString(getString(R.string.juristic), "");
-        String s2 = prefs.getString(getString(R.string.calculation), "");
-        String s3 = prefs.getString(getString(R.string.latitude), "");
-        String s4 = prefs.getString(getString(R.string.time), "");
-        // Toast.makeText(this, s3, Toast.LENGTH_SHORT).show();
-
-        int RG1;
-        int RG2;
-        int RG3;
-        int RG4;
-        if (!(s1.equals("") && s2.equals("") && s3.equals("") && s4.equals(""))) {
-            RG1 = Integer.parseInt(s1);
-            RG2 = Integer.parseInt(s2);
-            RG3 = Integer.parseInt(s3);
-            RG4 = Integer.parseInt(s4);
-
-            prayers.setTimeFormat(RG4);
-            prayers.setCalcMethod(RG2);
-            prayers.setAsrJuristic(RG1);
-            prayers.setAdjustHighLats(RG3);
-        } else {
-            prayers.setTimeFormat(1);
-            prayers.setCalcMethod(4);
-            prayers.setAsrJuristic(0);
-            prayers.setAdjustHighLats(0);
-        }
-
-
-        Date now = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(now);
-
-        int[] offsets = {0, 0, 0, 0, 0, 0, 0}; // {Fajr,Sunrise,Dhuhr,Asr,Sunset,Maghrib,Isha}
-        prayers.tune(offsets);
-
-        ArrayList<String> prayerTimes = prayers.getPrayerTimes(cal, latitude1, longitude2, timezone);
-        ArrayList<String> prayerNames = prayers.getTimeNames();
-
-
-        return prayerTimes;
-    }
+//should be inside button event listener for display them
+//    public ArrayList<String> getprayertime() {
+//        getLocation();
+//
+//        PrayTime prayers = new PrayTime();
+//        double latitude1 = 24.644659;
+//        double longitude2 = 46.587570;
+//        double timezone = prayers.getBaseTimeZone();
+//
+//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+//        SharedPreferences.Editor editor = prefs.edit();
+//
+//        String s1 = prefs.getString(getString(R.string.juristic), "");
+//        String s2 = prefs.getString(getString(R.string.calculation), "");
+//        String s3 = prefs.getString(getString(R.string.latitude), "");
+//        String s4 = prefs.getString(getString(R.string.time), "");
+//        // Toast.makeText(this, s3, Toast.LENGTH_SHORT).show();
+//
+//        int RG1;
+//        int RG2;
+//        int RG3;
+//        int RG4;
+//        if (!(s1.equals("") && s2.equals("") && s3.equals("") && s4.equals(""))) {
+//            RG1 = Integer.parseInt(s1);
+//            RG2 = Integer.parseInt(s2);
+//            RG3 = Integer.parseInt(s3);
+//            RG4 = Integer.parseInt(s4);
+//
+//            prayers.setTimeFormat(RG4);
+//            prayers.setCalcMethod(RG2);
+//            prayers.setAsrJuristic(RG1);
+//            prayers.setAdjustHighLats(RG3);
+//        } else {
+//            prayers.setTimeFormat(1);
+//            prayers.setCalcMethod(4);
+//            prayers.setAsrJuristic(0);
+//            prayers.setAdjustHighLats(0);
+//        }
+//
+//
+//        Date now = new Date();
+//        Calendar cal = Calendar.getInstance();
+//        cal.setTime(now);
+//
+//        int[] offsets = {0, 0, 0, 0, 0, 0, 0}; // {Fajr,Sunrise,Dhuhr,Asr,Sunset,Maghrib,Isha}
+//        prayers.tune(offsets);
+//
+//        ArrayList<String> prayerTimes = prayers.getPrayerTimes(cal, latitude1, longitude2, timezone);
+//        ArrayList<String> prayerNames = prayers.getTimeNames();
+//
+//
+//
+//        return prayerTimes;
+//    }
 
 
 }
