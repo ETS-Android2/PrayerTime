@@ -147,25 +147,81 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 ArrayList<String> prayerNames = prayers.getTimeNames();
                 times = (RecyclerView) findViewById(R.id.timesView);
                 list = new ArrayList<PrayerTime>();
+
+//                Calendar rightNow = Calendar.getInstance();
+//                int currentHourIn24Format = rightNow.get(Calendar.HOUR_OF_DAY); // return the hour in 24 hrs format (ranging from 0-23)
+//                int currentHourIn12Format = rightNow.get(Calendar.HOUR);
+                Date nowtime = new Date();
+                SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("HH");
+                String time = TIME_FORMAT.format(nowtime);
+                //System.out.println(Integer.parseInt(time));
+                int timeInt = Integer.parseInt(time);
+                int next = 0;
+
+
                 for (int i = 0; i < prayerTimes.size(); i++) {
                     if (i == 0) {
                         fajer.setName(prayerNames.get(i));
                         fajer.setTime(prayerTimes.get(i));
+                        String p = prayerTimes.get(i);
+                        String nextPrayer = p.substring(0,2);
+                        int hour = Integer.parseInt(nextPrayer);
+                        if(timeInt>hour){
+                            fajer.setNext(false);
+                        }else if(next<hour){
+                            fajer.setNext(true);
+                            next = hour;
+                        }else{
+                            fajer.setNext(false);
+                        }
                         list.add(fajer);
                     }
                     if (i == 1) {
                         Sunrise.setName(prayerNames.get(i));
                         Sunrise.setTime(prayerTimes.get(i));
+                        String p = prayerTimes.get(i);
+                        String nextPrayer = p.substring(0,2);
+                        int hour = Integer.parseInt(nextPrayer);
+                        if(timeInt>hour){
+                            Sunrise.setNext(false);
+                        }else if(next<hour){
+                            Sunrise.setNext(true);
+                            next = hour;
+                        }else{
+                            Sunrise.setNext(false);
+                        }
                         list.add(Sunrise);
                     }
                     if (i == 2) {
                         Duhur.setName(prayerNames.get(i));
                         Duhur.setTime(prayerTimes.get(i));
+                        String p = prayerTimes.get(i);
+                        String nextPrayer = p.substring(0,2);
+                        int hour = Integer.parseInt(nextPrayer);
+                        if(timeInt>hour){
+                            Duhur.setNext(false);
+                        }else if(next<hour){
+                            Duhur.setNext(true);
+                            next = hour;
+                        }else{
+                            Duhur.setNext(false);
+                        }
                         list.add(Duhur);
                     }
                     if (i == 3) {
                         asser.setName(prayerNames.get(i));
                         asser.setTime(prayerTimes.get(i));
+                        String p = prayerTimes.get(i);
+                        String nextPrayer = p.substring(0,2);
+                        int hour = Integer.parseInt(nextPrayer);
+                        if(timeInt>hour){
+                            asser.setNext(false);
+                        }else if(next<hour){
+                            asser.setNext(true);
+                            next = hour;
+                        }else{
+                            asser.setNext(false);
+                        }
                         list.add(asser);
                     }
 
@@ -173,16 +229,49 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
                         Sunset.setName(prayerNames.get(i));
                         Sunset.setTime(prayerTimes.get(i));
+                        String p = prayerTimes.get(i);
+                        String nextPrayer = p.substring(0,2);
+                        int hour = Integer.parseInt(nextPrayer);
+                        if(timeInt>hour){
+                            Sunset.setNext(false);
+                        }else if(next<hour){
+                            Sunset.setNext(true);
+                            next = hour;
+                        }else{
+                            Sunset.setNext(false);
+                        }
                         list.add(Sunset);
                     }
                     if (i == 5) {
                         magrib.setName(prayerNames.get(i));
                         magrib.setTime(prayerTimes.get(i));
+                        String p = prayerTimes.get(i);
+                        String nextPrayer = p.substring(0,2);
+                        int hour = Integer.parseInt(nextPrayer);
+                        if(timeInt>hour){
+                            magrib.setNext(false);
+                        }else if(next<hour){
+                            magrib.setNext(true);
+                            next = hour;
+                        }else{
+                            magrib.setNext(false);
+                        }
                         list.add(magrib);
                     }
                     if (i == 6) {
                         isha.setName(prayerNames.get(i));
                         isha.setTime(prayerTimes.get(i));
+                        String p = prayerTimes.get(i);
+                        String nextPrayer = p.substring(0,2);
+                        int hour = Integer.parseInt(nextPrayer);
+                        if(timeInt>hour){
+                            isha.setNext(false);
+                        }else if(next<hour){
+                            isha.setNext(true);
+                            next = hour;
+                        }else{
+                            isha.setNext(false);
+                        }
                         list.add(isha);
                     }
                 }
@@ -199,7 +288,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 String date = DATE_FORMAT.format(today);
 
                 //Loop and generate a notification for every prayer time
-                for (int i = 0; i < prayerTimes.size(); i++) {
+                for (int i = 0; i < list.size(); i++) {
                     // Generate a pending intent to be used later
                     Intent intent = new Intent(MainActivity.this, PrayerTimeBroadcast.class);
                     intent.putExtra("NotificationID", 1);
@@ -207,13 +296,17 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
                     AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
+                    String timeInHours="00:00:00";
                     //set the alarm as hh:mm:ss
-                    String timeInHours =  prayerTimes.get(i).concat(":00"); // this ONLY works on 24 hour format for now
-                    System.out.println(Integer.parseInt(s4));
-                    if(Integer.parseInt(s4)==0){
-                        timeInHours =  prayerTimes.get(i).substring(0,5);
-                        timeInHours = timeInHours.concat(":00");
-                    }else if(Integer.parseInt(s4)==3)
+                    if(list.get(i).isNext())
+                        timeInHours =  list.get(i).getTime().concat(":00"); // this ONLY works on 24 hour format for now
+
+//                    if(Integer.parseInt(s4)==0){
+//                        timeInHours =  prayerTimes.get(i).substring(0,5);
+//                        timeInHours = timeInHours.concat(":00");
+//                    }else if(Integer.parseInt(s4)==3){
+//
+//                    }
                     //String timeInHours = "04:19:00"; //use this for testing
                     Toast.makeText(MainActivity.this, "alarm is set at " + timeInHours, Toast.LENGTH_SHORT).show();
                     String myDate = date.concat(timeInHours);

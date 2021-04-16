@@ -36,9 +36,12 @@ public class TimeViewAdapter extends RecyclerView.Adapter<TimeViewAdapter.MyView
         holder.name.setText(list.get(i).getName());
         holder.time.setText(list.get(i).getTime());
 
-        if(i==0){ //for test
+        boolean test = list.get(i).isNext();
+
+        if(test){ //for test
             holder.layout.setBackgroundResource(R.drawable.now_prayer);
             holder.icon.setBackgroundResource(R.drawable.ic_baseline_notifications_none_24);
+
         }
 
     }
