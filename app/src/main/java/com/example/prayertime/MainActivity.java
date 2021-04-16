@@ -157,6 +157,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 //System.out.println(Integer.parseInt(time));
                 int timeInt = Integer.parseInt(time);
                 int next = 0;
+                boolean isNext= true;
 
 
                 for (int i = 0; i < prayerTimes.size(); i++) {
@@ -168,11 +169,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                         int hour = Integer.parseInt(nextPrayer);
                         if(timeInt>hour){
                             fajer.setNext(false);
-                        }else if(next<hour){
+                            isNext = true;
+                        }else if(next<hour && isNext){
                             fajer.setNext(true);
                             next = hour;
+                            isNext = false;
                         }else{
                             fajer.setNext(false);
+                            isNext = true;
                         }
                         list.add(fajer);
                     }
@@ -184,11 +188,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                         int hour = Integer.parseInt(nextPrayer);
                         if(timeInt>hour){
                             Sunrise.setNext(false);
-                        }else if(next<hour){
+                            isNext = true;
+                        }else if(next<hour && isNext){
                             Sunrise.setNext(true);
                             next = hour;
+                            isNext = false;
                         }else{
                             Sunrise.setNext(false);
+                            isNext = true;
                         }
                         list.add(Sunrise);
                     }
@@ -200,11 +207,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                         int hour = Integer.parseInt(nextPrayer);
                         if(timeInt>hour){
                             Duhur.setNext(false);
-                        }else if(next<hour){
+                            isNext = true;
+                        }else if(next<hour && isNext){
                             Duhur.setNext(true);
                             next = hour;
+                            isNext = false;
                         }else{
                             Duhur.setNext(false);
+                            isNext = true;
                         }
                         list.add(Duhur);
                     }
@@ -216,11 +226,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                         int hour = Integer.parseInt(nextPrayer);
                         if(timeInt>hour){
                             asser.setNext(false);
-                        }else if(next<hour){
+                            isNext = true;
+                        }else if(next<hour && isNext){
                             asser.setNext(true);
                             next = hour;
+                            isNext = false;
                         }else{
                             asser.setNext(false);
+                            isNext = true;
                         }
                         list.add(asser);
                     }
@@ -234,11 +247,13 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                         int hour = Integer.parseInt(nextPrayer);
                         if(timeInt>hour){
                             Sunset.setNext(false);
-                        }else if(next<hour){
+                            isNext = true;
+                        }else if(next<hour && isNext){
                             Sunset.setNext(true);
                             next = hour;
                         }else{
                             Sunset.setNext(false);
+                            isNext = true;
                         }
                         list.add(Sunset);
                     }
@@ -250,11 +265,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                         int hour = Integer.parseInt(nextPrayer);
                         if(timeInt>hour){
                             magrib.setNext(false);
-                        }else if(next<hour){
+                            isNext = true;
+                        }else if(next<hour && isNext){
                             magrib.setNext(true);
                             next = hour;
+                            isNext = false;
                         }else{
                             magrib.setNext(false);
+                            isNext = true;
                         }
                         list.add(magrib);
                     }
@@ -266,11 +284,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                         int hour = Integer.parseInt(nextPrayer);
                         if(timeInt>hour){
                             isha.setNext(false);
-                        }else if(next<hour){
+                            isNext = true;
+                        }else if(next<hour && isNext){
                             isha.setNext(true);
                             next = hour;
+                            isNext = false;
                         }else{
                             isha.setNext(false);
+                            isNext = true;
                         }
                         list.add(isha);
                     }
