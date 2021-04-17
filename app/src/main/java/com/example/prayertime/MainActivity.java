@@ -201,6 +201,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     } else {
                         fajer.setNext(false);
                     }
+                }else {
+                    fajer.setName(prayerNames.get(i));
+                    fajer.setTime(prayerTimes.get(i));
                 }
                 list.add(fajer);
             }
@@ -234,6 +237,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     } else {
                         Sunrise.setNext(false);
                     }
+                }else {
+                    Sunrise.setName(prayerNames.get(i));
+                    Sunrise.setTime(prayerTimes.get(i));
                 }
                 list.add(Sunrise);
             }
@@ -267,6 +273,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     } else {
                         Duhur.setNext(false);
                     }
+                }else {
+                    Duhur.setName(prayerNames.get(i));
+                    Duhur.setTime(prayerTimes.get(i));
                 }
                 list.add(Duhur);
             }
@@ -300,6 +309,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     } else {
                         asser.setNext(false);
                     }
+                }else {
+                    asser.setName(prayerNames.get(i));
+                    asser.setTime(prayerTimes.get(i));
                 }
                 list.add(asser);
             }
@@ -334,6 +346,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     } else {
                         magrib.setNext(false);
                     }
+                }else{
+                    magrib.setName(prayerNames.get(i));
+                    magrib.setTime(prayerTimes.get(i));
                 }
                 list.add(magrib);
             }
@@ -368,6 +383,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     } else {
                         isha.setNext(false);
                     }
+                }else{
+                    isha.setName(prayerNames.get(i));
+                    isha.setTime(prayerTimes.get(i));
                 }
                 list.add(isha);
             }
