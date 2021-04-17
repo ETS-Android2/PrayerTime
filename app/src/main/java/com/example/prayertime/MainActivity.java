@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     String p = prayerTimes.get(i);
                     String nextPrayer = p.substring(0, 2);
                     int hour = Integer.parseInt(nextPrayer);
-                    if (timeInt > hour) {
+                    if (timeInt > hour && timeInt<20) {
                         fajer.setNext(false);
                     } else if (next < hour && isNext) {
                         fajer.setNext(true);
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     fajer.setTime(prayerTimes.get(i).substring(0, 5));
                     String p = prayerTimes.get(i).substring(0, 5);
                     double hour = Double.parseDouble(p);
-                    if (timeInt > hour) {
+                    if (timeInt > hour && timeInt<20) {
                         fajer.setNext(false);
                     } else if (nextFloat < hour && isNext) {
                         fajer.setNext(true);
