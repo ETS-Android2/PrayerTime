@@ -51,26 +51,26 @@ public class SettingsFragment extends PreferenceFragment {
                 if (key.equals(PREF_JURISTIC)) {
                     ListPreference juristicPref = (ListPreference) findPreference(key); //if you need the prefrence key similar to find by ID
                     RG1 = Integer.valueOf((juristicPref.getValue()));
-                    Toast.makeText(getActivity(), juristicPref.getValue(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Juristic method updated", Toast.LENGTH_SHORT).show();
                 }
                 if (key.equals(PREF_CALC)) {
                     ListPreference calculatePref = (ListPreference) findPreference(key);
                     RG2 = Integer.valueOf((calculatePref.getValue()));
 
-                    Toast.makeText(getActivity(), calculatePref.getValue(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Calculation convention updated" , Toast.LENGTH_SHORT).show();
                 }
                 if (key.equals(PREF_LATITUDE)) {
                     ListPreference latitudePref = (ListPreference) findPreference(key);
                     RG3 = Integer.valueOf((latitudePref.getValue()));
 
-                    Toast.makeText(getActivity(), latitudePref.getValue(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Latitude adjustment updated", Toast.LENGTH_SHORT).show();
 
                 }
                 if (key.equals(PREF_TIME)) {
                     ListPreference timePref = (ListPreference) findPreference(key);
                     RG4 = Integer.valueOf((timePref.getValue()));
 
-                    Toast.makeText(getActivity(), timePref.getValue(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Time format updated", Toast.LENGTH_SHORT).show();
                 }
                 if (key.equals(PREF_SILENT)) {
                     EditTextPreference editText = (EditTextPreference) findPreference(key);

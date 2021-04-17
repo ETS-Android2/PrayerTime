@@ -20,19 +20,6 @@
         app:srcCompat="@drawable/backdrop"
         tools:ignore="MissingConstraints" />
 
-
-    <Button
-        android:id="@+id/calPrayerTime_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calculate Preyer Time"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236" />
-
     <Button
         android:id="@+id/settingButton"
         android:layout_width="100px"
@@ -76,6 +63,8 @@
         </androidx.recyclerview.widget.RecyclerView>
 
     </RelativeLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

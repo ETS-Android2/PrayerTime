@@ -14,8 +14,6 @@ public class PrayerTimeBroadcast extends BroadcastReceiver {
         String ChannelID = "CHANEL_1";
         int NotificationID = intent.getIntExtra("NotificationID", 0);
 
-        Toast.makeText(context.getApplicationContext(),ChannelID+" "+NotificationID, Toast.LENGTH_LONG).show();
-
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, ChannelID)
                 .setSmallIcon(android.R.drawable.ic_lock_idle_alarm)
                 .setContentTitle("Prayer Time")
@@ -25,6 +23,6 @@ public class PrayerTimeBroadcast extends BroadcastReceiver {
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
 
         //create the channel
-        notificationManagerCompat.notify(NotificationID, builder.build()); // an ID for every channel
+        notificationManagerCompat.notify(NotificationID, builder.build()); // an ID for every notification
     }
 }

@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             }
         });
 
-        calculatePrayTimes = findViewById(R.id.calPrayerTime_button);
         //Runtime permissions
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -83,18 +82,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     Manifest.permission.ACCESS_FINE_LOCATION
             }, 100);
         }
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
-        calculatePrayTimes.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void onClick(View v) {
-                //create method
+
 
                 refrechTimes();
-
-            }
-        });
 
     }
 
@@ -111,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         String s2 = prefs.getString(getString(R.string.calculation), "");
         String s3 = prefs.getString(getString(R.string.latitude), "");
         String s4 = prefs.getString(getString(R.string.time), "");
-        // Toast.makeText(this, s3, Toast.LENGTH_SHORT).show();
+
 
         int RG1;
         int RG2;
@@ -157,13 +150,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         times = (RecyclerView) findViewById(R.id.timesView);
         list = new ArrayList<PrayerTime>();
 
-//                Calendar rightNow = Calendar.getInstance();
-//                int currentHourIn24Format = rightNow.get(Calendar.HOUR_OF_DAY); // return the hour in 24 hrs format (ranging from 0-23)
-//                int currentHourIn12Format = rightNow.get(Calendar.HOUR);
+
         Date nowtime = new Date();
         SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("HH");
         String time = TIME_FORMAT.format(nowtime);
-        //System.out.println(Integer.parseInt(time));
+
         int timeInt = Integer.parseInt(time);
         int next = 0;
         double nextFloat = 0;
@@ -402,12 +393,13 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd ");
         String date = DATE_FORMAT.format(today);
 
-        //Loop and generate a notification for every prayer time
+        /*
+         * the user will get notified based on what prayer is upcoming next
+         */
         for (int i = 0; i < list.size(); i++) {
             // Generate a pending intent to be used later
             Intent intent = new Intent(MainActivity.this, PrayerTimeBroadcast.class);
             intent.putExtra("NotificationID", 1);
-            //intent.putExtra("NotificationID", i);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
@@ -427,8 +419,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             }
             //set the alarm as hh:mm:ss
             if(list.get(i).isNext()) {
-
-                //String timeInHours = "04:19:00"; //use this for testing
                 Toast.makeText(MainActivity.this, "alarm is set at " + timeInHours, Toast.LENGTH_SHORT).show();
                 String myDate = date.concat(timeInHours);
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -440,8 +430,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 }
 
                 long timeInMillis = finalDate.getTime(); // get time in millisecond
-                Toast.makeText(MainActivity.this, timeInMillis + "", Toast.LENGTH_SHORT).show();
-                alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent); // or setExact NOT SURE!!
+                alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
             }
         }
     }
