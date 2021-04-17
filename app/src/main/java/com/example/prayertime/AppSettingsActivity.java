@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.os.Build;
@@ -36,6 +38,8 @@ public class AppSettingsActivity extends AppCompatActivity{
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             // Sets the Toolbar to act as the ActionBar for this Activity window.
             // Make sure the toolbar exists in the activity and is not null
+            Intent returnIntent = new Intent();
+            setResult(0, returnIntent);
             setSupportActionBar(toolbar);
         }
     }
