@@ -14,7 +14,7 @@ Furthermore, the user can login/register to the app by entering their email and 
 The app also grants users the ability to switch the phone to silent mode for a specified period of time to avoid ringing if the user is in a mosque. 
 
 ## Interface
-<p align="center">
+<p align="left">
   <img height="500" src="images\1.png" />
   <img height="500" src="images\2.png" />
   <img height="500" src="images\3.png" />
