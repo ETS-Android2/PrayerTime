@@ -1,9 +1,8 @@
 <p align = "center">
 <img  width = "100" src="images/prayer_times_logo.svg" />
 <h1 align = "center"> Introduction </h1>
-<p align= "center"> Prayer Times is a project requirement for <b>SWE 482</b> <em>Mobile Application Development</em> course. It's an android application that calculates prayer times based on users location and displays the time of prayers for the current day.
- </p>
-<p align= "center"> The aim of the app is to help Muslims find accurate prayer times in any place in the world while using an intuituve and well designed app. </p>
+Prayer Times is a project requirement for <b>SWE 482</b> <em>Mobile Application Development</em> course. It's an android application that calculates prayer times based on users location and displays the time of prayers for the current day.
+The aim of the app is to help Muslims find accurate prayer times in any place in the world while using an intuituve and well designed app. 
 </p>
 
 <h1 align = "center"> App Features </h1>
