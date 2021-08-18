@@ -18,4 +18,16 @@ The app also grants users the ability to switch the phone to silent mode for a s
 
 
 ## Color Pallete 
-
+![#FEFEFF](https://via.placeholder.com/15/FEFEFF/000000?text=+) `#FEFEFF`
+<br>
+![#DDDAED](https://via.placeholder.com/15/DDDAED/000000?text=+) `#DDDAED`
+<br>
+![#848BBA](https://via.placeholder.com/15/848BBA/000000?text=+) `#848BBA`
+<br>
+![#A691C8](https://via.placeholder.com/15/A691C8/000000?text=+) `#A691C8`
+<br>
+![#724FAB](https://via.placeholder.com/15/724FAB/000000?text=+) `#724FAB`
+<br>
+![#50578B](https://via.placeholder.com/15/50578B/000000?text=+) `#50578B`
+<br>
+![#24273E](https://via.placeholder.com/15/24273E/000000?text=+) `#24273E`
