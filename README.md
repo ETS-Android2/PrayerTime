@@ -19,9 +19,6 @@ The app also grants users the ability to switch the phone to silent mode for a s
   <img height="500" src="images\2.png" />
   <img height="500" src="images\3.png" />
   <img height="500" src="images\4.png" />
- </p>
-  <br>
-<p align="left">
   <img height="500" src="images\5.png" />
   <img height="500" src="images\6.png" />
   <img height="500" src="images\7.png" />
